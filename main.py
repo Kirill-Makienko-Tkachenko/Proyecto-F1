@@ -24,6 +24,6 @@ with open(r"coordenadas_autodromo.csv",'r') as file:
             #print(row[0], "\t" , row[1], "\t" , row[2], "\t" , row[3], "\t" , row[4])
             distanciaX = x - float(row[0])
             distanciaY = y - float(row[1])
-            x = row[0]
-            y = row[1]
+            x = float(row[0])
+            y = float(row[1])
             print("Distancia en X de estos 2 puntos: ", distanciaX, "Distancia en Y de estos 2 puntos: ", distanciaY)
