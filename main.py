@@ -10,7 +10,6 @@ import math
 import csv
 import pandas as pd
 from funciones import *
-df = pd.read_csv(r"coordenadas_autodromo.csv",header=None)
 
 # como nadien de ustedes estaban, dulce y kirill tomamos la desicion ejecutiva de trabajar con python default, sin pandas
 
@@ -28,12 +27,12 @@ arrY = []
 tipoCurva = []
 velMax = []
 
-#velMaxC = int(input()) # Velocidad Maxima coche
-#pesoC = int(input()) # Peso del coche
-#aceleracionC = int(input()) # Aceleracion del coche
-#frenadoC = int(input()) # Capacidad de frenado del coche
-#friccionC = int(input()) # Coeficiente de friccion de las llantas con el piso
-#resistenciaC = int(input()) # Resistencia del aire con respecto al coche
+velMaxC = 320 # Km/H
+pesoC = 798 # Kg
+aceleracionC = 35.71 # 100 Km/H en 2.8 segundos, por lo tanto esta en m/s
+#frenadoC = int(input()) # Vamos a sacarlo con mi coche
+friccionC = 0.8 # Coeficiente de friccion de las llantas con el piso
+resistenciaC = 1.1 # CX
 
 
 # Importar .csv de excel y escribir sus datos en un array de python
