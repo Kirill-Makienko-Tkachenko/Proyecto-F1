@@ -33,6 +33,7 @@ aceleracionC = 35.71 # 100 Km/H en 2.8 segundos, por lo tanto esta en m/s
 #frenadoC = int(input()) # Vamos a sacarlo con mi coche
 friccionC = 0.8 # Coeficiente de friccion de las llantas con el piso
 resistenciaC = 1.1 # CX
+densidadA = 1.225
 
 
 # Importar .csv de excel y escribir sus datos en un array de python
