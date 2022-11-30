@@ -89,7 +89,7 @@ while i < 332:
                         velALV = vel
                         if vel > velMaxC:
                                 vel = velMaxC
-                                velTotales.append(vel)
+                        velTotales.append(vel)
                 if d + 40 > disTot:
                         
                         disSigPunto = distanciaSiguienteSegmento(arrX[i],arrX[i+1],arrY[i],arrY[i+1])
@@ -116,6 +116,7 @@ while i < 332:
                         print("Distancia necesaria para frenar: ", d)
                         if tipoCurva[i] == 1 and tipoCurva[i+1] == 1 and tipoCurva[i+2] == 1 and tipoCurva[i+4] == 1 and d < disTot:
                                 vel = round(vel - math.sqrt(vel),3)
+                                velTotales.append(vel)
 
                         p -= 1
                 
@@ -137,7 +138,7 @@ while i < 332:
                                 vel = vel - 20
                         if vel > velMaxC:
                                 vel = velMaxC
-                                velTotales.append(vel)
+                        velTotales.append(vel)
                 if d + 10 > disTot:
                         
                         disSigPunto = distanciaSiguienteSegmento(arrX[i],arrX[i+1],arrY[i],arrY[i+1])
@@ -145,8 +146,8 @@ while i < 332:
                         vel = velf
                         print("desaceleracion",vel, arrX[i], arrY[i])
                         velTotales.append(vel)
-                if vel > int(velMax[i]):
-                        print("no we")
+                #if vel > int(velMax[i]):
+                 #       print("no we")
                
 
                 print(tipoCurva[i], tipoCurva[i+1],tipoCurva[i+2],tipoCurva[i+p])
@@ -162,6 +163,9 @@ while i < 332:
                         print("Distancia necesaria para frenar: ", d)
                         
                         print(vel)
+                        if tipoCurva[i] == 1 and tipoCurva[i+1] == 1 and tipoCurva[i+2] == 1 and tipoCurva[i+4] == 1 and d < disTot:
+                                vel = round(vel - math.sqrt(vel),3)
+                                velTotales.append(vel)        
                         p -= 1
                # input()
                 #acelerar
@@ -172,6 +176,7 @@ while i < 332:
 
 
 print(velTotales)
+print(len(velTotales))
 
 
 
