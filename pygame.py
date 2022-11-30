@@ -62,4 +62,5 @@ while True:
     for e in event.get():
         if e.type == QUIT: sys.exit
     animar()
-    
+
+s
