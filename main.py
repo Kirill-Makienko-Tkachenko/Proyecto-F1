@@ -26,11 +26,14 @@ arrX = []
 arrY = []
 tipoCurva = []
 velMax = []
+velTotales = []
 
-velMaxC = 320 # Km/H
+
+
+velMaxC = 300 # Km/H
 pesoC = 798 # Kg
 aceleracionC = 35.71 # 100 Km/H en 2.8 segundos, por lo tanto esta en m/s
-#frenadoC = int(input()) # Vamos a sacarlo con mi coche
+frenadoC = 10 # Calculado a partir de mi poderosisismo Yaris
 friccionC = 0.8 # Coeficiente de friccion de las llantas con el piso
 resistenciaC = 1.1 # CX
 densidadA = 1.225
@@ -68,36 +71,107 @@ while i < 5: # Este Append es para decirle al programa que si puede ir a "i" + d
 
 
 i = 0
-p = 3
+p = 5
+d = 0
+disTot = 100
 vel = 0 # Velocidad inicial del coche = 0, parte del reposo
 while i < 332:
 # Vamos a hacer logica de segmentos rectos
-        if int(tipoCurva[i]) == 0:
+        if int(tipoCurva[i-1]) == 0:
+                if int(tipoCurva[i-1]) ==  1:
+                        d = 0
+                if d +40 < disTot:
+                        print("aceleracion", vel, arrX[i], arrY[i])
+                        disSigPunto = float(distanciaSiguienteSegmento(arrX[i],arrX[i+1],arrY[i],arrY[i+1]))
+                        vel = round((vel/3.6),3) #Convertimos a ms
+                        vel = round(math.sqrt(vel**2 + 2*aceleracionC*disSigPunto),2)
+                        vel = round(vel*3.6,3) #Convertimos a kmh
+                        velALV = vel
+                        if vel > velMaxC:
+                                vel = velMaxC
+                                velTotales.append(vel)
+                if d + 40 > disTot:
+                        
+                        disSigPunto = distanciaSiguienteSegmento(arrX[i],arrX[i+1],arrY[i],arrY[i+1])
+                        vel = round(vel/3.6,3)
+                        vel = round(vel - (frenadoC*t),3)
+                        vel = round(vel*3.6,3)
+                        velTotales.append(vel)
+                                
+                                
+                        print("desaceleracion",vel, arrX[i], arrY[i])
                 
-                input()
-                if int(tipoCurva[i+p]) or int(tipoCurva[i+p-1]) == 1:
+                if int(tipoCurva[i+p]) == 1:
                         disTot = distanciaSiguienteSegmento(arrX[i],arrX[i+p],arrY[i],arrY[i+p])
                         print("Distancia total hasta siguiente segmento curvo: " , disTot)
-#                        distancia disponible > distancia para frenar:
-                        p -= 1
+                        velMS = round(vel/3.6,3)
                         
+                        velMSfin = round((float(velMax[i+p])-20)/3.6,3)
+                        print(velMSfin)
+                        print(velMS)
+                        
+                        t = round((velMS-velMSfin)/frenadoC,3)
+                        print("Tiempo es : ", t)
+                        d = round(((velMS+velMSfin)/2)*t,3)
+                        print("Distancia necesaria para frenar: ", d)
+                        if tipoCurva[i] == 1 and tipoCurva[i+1] == 1 and tipoCurva[i+2] == 1 and tipoCurva[i+4] == 1 and d < disTot:
+                                vel = round(vel - math.sqrt(vel),3)
+
+                        p -= 1
+                
+                print(tipoCurva[i], tipoCurva[i+1],tipoCurva[i+2],tipoCurva[i+4],tipoCurva[i+5])
+                #input()
+
                 
         if int(tipoCurva[i]) == 1:
+                
+                if int(tipoCurva[i-1]) ==  0:
+                        d = 0
+                if vel < float(velMax[i]):
+                        print("aceleracion", vel, arrX[i], arrY[i])
+                        disSigPunto = distanciaSiguienteSegmento(arrX[i],arrX[i+1],arrY[i],arrY[i+1])
+                        vel = round(vel/3.6,3) #Convertimos a ms
+                        vel = round(math.sqrt((vel**2 + 2*(aceleracionC/3)*disSigPunto)),3) #Dividimos entre 2 porque acelera con mas precaucion
+                        vel = round(vel*3.6,) #Convertimos a kmh
+                        if vel > float(velMax[i]):
+                                vel = vel - 20
+                        if vel > velMaxC:
+                                vel = velMaxC
+                                velTotales.append(vel)
+                if d + 10 > disTot:
+                        
+                        disSigPunto = distanciaSiguienteSegmento(arrX[i],arrX[i+1],arrY[i],arrY[i+1])
+                        velf = round(vel - (frenadoC*t),3)
+                        vel = velf
+                        print("desaceleracion",vel, arrX[i], arrY[i])
+                        velTotales.append(vel)
+                if vel > int(velMax[i]):
+                        print("no we")
+               
+
                 print(tipoCurva[i], tipoCurva[i+1],tipoCurva[i+2],tipoCurva[i+p])
-                input()
+                
                 if int(tipoCurva[i+p]) == 0:
                         disTot = distanciaSiguienteSegmento(arrX[i],arrX[i+p],arrY[i],arrY[i+p])
                         print("Distancia total hasta siguiente segmento recto: " , disTot)
-#                        distancia disponible > distancia para frenar:
+                        velMS = round(vel/3.6,3)
+                        velMSfin = round((float(velMax[i+p])-20)/3.6,3)
+                        t = round((velMS-velMSfin)/frenadoC,3)
+                        print("Tiempo es : ", t)
+                        d = round(((velMS+velMSfin)/2)*t,3)
+                        print("Distancia necesaria para frenar: ", d)
+                        
+                        print(vel)
                         p -= 1
-                
+               # input()
                 #acelerar
         if p == 0:
-                p = 3
+                p = 5
+        
         i += 1
 
 
-
+print(velTotales)
 
 
 

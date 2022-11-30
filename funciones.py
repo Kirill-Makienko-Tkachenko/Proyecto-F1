@@ -21,6 +21,7 @@ def aceleracion(v1,v2,v3,v4,v5):
 
 def distanciaSiguienteSegmento(x0,x1,y0,y1):
     resultado = math.sqrt(((x1-x0)**2)+((y1-y0)**2))
+    resultado = round(resultado,3)
     return resultado
 
 def potencia(vel):
