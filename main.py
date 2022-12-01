@@ -27,6 +27,7 @@ arrY = []
 tipoCurva = []
 velMax = []
 velTotales = []
+potencias = []
 
 
 
@@ -90,6 +91,7 @@ while i < 332:
                         if vel > velMaxC:
                                 vel = velMaxC
                         velTotales.append(vel)
+
                 if d + 40 > disTot:
                         
                         disSigPunto = distanciaSiguienteSegmento(arrX[i],arrX[i+1],arrY[i],arrY[i+1])

@@ -8,9 +8,11 @@
 
 import math
 import csv
-from pygame import *
 from funciones import *
 import sys, time
+import plotly.graph_objects as go
+import matplotlib as plt
+import numpy as np
 
 # como nadien de ustedes estaban, dulce y kirill tomamos la desicion ejecutiva de trabajar con python default, sin pandas
 
@@ -49,18 +51,6 @@ file.close()
 
 #print(arrX)
 #print(arrY)
-#print(velTotales)
-def animar():
-    puntos = 0
-    while puntos < len(arrX):
-        draw.circle(screen, color, (arrX[puntos], arrY[puntos], 1))
-
-init()
-screen = pygame.display.set_mode((1500, 1200))
-while True:
-    screen.fill((255,255,255))
-    for e in event.get():
-        if e.type == QUIT: sys.exit
-    animar()
-
-s
+print(velTotales)
+i = 0
+#while i < 332:
