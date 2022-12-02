@@ -25,9 +25,9 @@ def distanciaSiguienteSegmento(x0,x1,y0,y1):
     return resultado
 
 def potencia(vel):
-    potenciaA = 1/2*densidadA*resistenciaC*friccionC*vel*vel
+    potenciaA = 1/2*densidadA*resistenciaC*friccionC*vel*vel*vel
     return potenciaA
 
 def resistenciaAerodinamica(vel):
-    resistencia = 1/2*densidadA*resistenciaC*friccionC*vel*vel*vel
+    resistencia = 1/2*densidadA*resistenciaC*friccionC*vel*vel
     return resistencia
