@@ -180,6 +180,13 @@ while i < 332:
 print(velTotales)
 print(len(velTotales))
 
+p = 0
+potencias = []
+while p < 271:
+        potencias.append(potencia(velTotales[p]))
+        p = p + 1
+
+
 
 
 #logica que tal vez podamos usar en el futuro
