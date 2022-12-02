@@ -186,7 +186,7 @@ while p < 271:
         potencias.append(potencia(velTotales[p]))
         p = p + 1
 
-
+print("NO")
 
 
 #logica que tal vez podamos usar en el futuro
