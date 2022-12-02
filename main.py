@@ -180,6 +180,12 @@ while i < 332:
 print(velTotales)
 print(len(velTotales))
 
+r = 0
+resistencias = []
+while r < 271:
+        resistencias.append(resistenciaAerodinamica(velTotales[r]))
+        r = r + 1
+
 p = 0
 potencias = []
 while p < 271:
@@ -187,8 +193,7 @@ while p < 271:
         p = p + 1
 
 print(potencias)
-
-
+print(resistencias)
 
 #logica que tal vez podamos usar en el futuro
 
