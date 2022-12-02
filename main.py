@@ -192,8 +192,12 @@ while p < 271:
         potencias.append(potencia(velTotales[p]))
         p = p + 1
 
-print(potencias)
+print("RESISTENCIAS")
 print(resistencias)
+print("POTENCIAS")
+print(potencias)
+
+
 
 #logica que tal vez podamos usar en el futuro
 
